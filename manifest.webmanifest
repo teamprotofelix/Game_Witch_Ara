@@ -1,0 +1,31 @@
+{
+  "id": "./",
+  "name": "마녀의 사냥 — Witch’s Hunt",
+  "short_name": "마녀의 사냥",
+  "description": "고화질 마녀 스프라이트 액션 게임. 재료 사냥과 고위 마법 연성, 오프라인 PWA.",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#171326",
+  "theme_color": "#171326",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": [
+    "games",
+    "entertainment"
+  ]
+}

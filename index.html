@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#171326" />
+  <meta name="description" content="마법재료를 사냥해 고위 마법을 완성하는 한 손 조작 마녀 아케이드 액션. GitHub Pages 정적 호스팅 및 오프라인 PWA 지원." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="마녀의 사냥" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" type="image/png" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>마녀의 사냥 · Witch's Hunt</title>
+</head>
+<body>
+ <main id="app">
+  <canvas id="game" aria-label="마녀의 사냥 게임 필드" tabindex="0"></canvas>
+  <div id="screenFade"></div>
+  <div id="flash"></div>
+  <div id="hud" class="hud hidden" aria-live="off">
+   <div class="topbar">
+    <div class="avatar"><img src="./assets/portraits/witch_01.webp" alt="마녀" /></div>
+    <div class="stats">
+     <div class="statline"><span class="statname">HP</span><div class="meter red"><div id="hpFill"></div></div><span id="hpText">100 / 100</span></div>
+     <div class="statline"><span class="statname">MP</span><div class="meter blue"><div id="mpFill"></div></div><span id="mpText">100 / 100</span></div>
+     <div class="statline"><span class="statname">EXP</span><div class="meter gold"><div id="xpFill"></div></div><span id="levelText">Lv. 1</span></div>
+    </div>
+    <div class="stage-pill"><span id="stageName">달빛 숲</span><small><span id="clock">00:00</span> · <span id="killCount">0</span> 처치</small><div class="stage-progress"><div id="stageProgress"></div></div></div>
+    <button id="pauseBtn" class="round-btn" aria-label="일시정지">Ⅱ</button>
+   </div>
+   <div class="loot-strip" id="lootStrip"></div>
+   <div class="bossbar hidden" id="bossBar"><span id="bossName">보스</span><div class="meter red"><div id="bossFill"></div></div></div>
+   <div id="dangerTag" class="danger-tag hidden">보스 출현!</div>
+   <div id="comboBadge" class="combo-badge hidden">✦ COMBO</div>
+   <div class="bottomHud">
+    <div id="mobileHint" class="gesture-hint"><div class="touch-glyph">◎</div><span>누른 채 드래그: 이동 + 자동 공격</span></div>
+    <div class="hud-actions">
+     <button id="craftBtn" class="action-btn craft-btn"><span class="glyph">✦</span><span>조합</span><b id="craftCount">0</b></button>
+     <button id="skillFrost" class="action-btn spell-btn locked" data-spell="frost"><span class="glyph">❄</span><span>서리</span><small></small></button>
+     <button id="skillArc" class="action-btn spell-btn locked" data-spell="arc"><span class="glyph">ϟ</span><span>연쇄</span><small></small></button>
+     <button id="skillMeteor" class="action-btn spell-btn locked" data-spell="meteor"><span class="glyph">☄</span><span>운석</span><small></small></button>
+     <button id="skillMoon" class="action-btn spell-btn locked" data-spell="moon"><span class="glyph">☾</span><span>월식</span><small></small></button>
+    </div>
+   </div>
+   <div class="joy hidden" id="joy" aria-hidden="true"><div class="joy-knob" id="joyKnob"></div></div>
+   <div id="banner" class="banner hidden"></div>
+  </div>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <section id="menu" class="overlay menu-overlay" aria-label="시작 화면">
+   <div class="menu-art" role="img" aria-label="검은 마녀의 초상"></div>
+   <div class="menu-content">
+    <div class="eyebrow">✦  MOONLIT ARCADE  ✦</div>
+    <h1>마녀의<br/><em>사냥</em></h1>
+    <div class="en-title">W I T C H ' S &nbsp; H U N T</div>
+    <p class="lead">재료를 사냥하고 마법을 완성하라.<br/>달빛 아래, 네 가지 봉인이 깨어난다.</p>
+    <div class="menu-buttons">
+     <button id="startBtn" class="primary-btn">✧  새 사냥 시작</button>
+     <button id="continueBtn" class="secondary-btn hidden">↻  이어하기</button>
+     <button id="guideBtn" class="secondary-btn">⌁  게임 방법</button>
+    </div>
+    <div class="menu-foot">PC · MOBILE · OFFLINE PWA &nbsp; <span id="bestScore">최고 기록 —</span></div>
+   </div>
+  </section>
+
+  <section id="modal" class="overlay modal-overlay hidden" aria-live="polite">
+   <div class="dialog">
+    <div class="dialog-top"><div><small id="modalEyebrow">MAGIC WORKSHOP</small><h2 id="modalTitle">마법 연성실</h2></div><button id="modalClose" class="round-btn" aria-label="닫기">✕</button></div>
+    <div id="modalBody" class="dialog-body"></div>
+   </div>
+  </section>
+  <div id="installBanner" class="install-banner hidden"><span>✦ 홈 화면에 설치하면 오프라인으로 플레이할 수 있습니다.</span><button id="installBtn">설치</button><button id="installDismiss" aria-label="닫기">×</button></div>
+ </main>
+ <script src="./game.js" defer></script>
+</body>
+</html>

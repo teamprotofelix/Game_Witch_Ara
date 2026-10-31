@@ -1,0 +1,4 @@
+Witch's Hunt / 마녀의 사냥
+Version: 1.2.0 HQ Playable
+Date: 2026-10-31
+Static GitHub Pages PWA, no CDN or backend
